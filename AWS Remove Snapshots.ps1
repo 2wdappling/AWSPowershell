@@ -1,11 +1,13 @@
-﻿#More Testing
-## Adding another comment line
+﻿#Remove AWS Snapshots using CSV -- Drew Appling 07/25/2018
+#Required CSV fields = SnapshotID, Region
+#Fill in Access Key ID, Secret Access Key and Session Token
 
 Import-Module AWSPowerShell
 
 $aws_access_key_id = ""
 $aws_secret_access_key = ""
 $aws_session_token = ""
+$OutFolder = "C:\temp"
 
 $Snapshots = Import-Csv C:\temp\snapshot1.csv
 
@@ -26,4 +28,4 @@ ForEach($Snapshot in $Snapshots){
      }
 }
 
-$SnapshotStatusCollection | export-csv c:\temp\Snapshotreport.csv -notypeinformation
+$SnapshotStatusCollection | export-csv $OutFolder\Snapshotreport.csv -notypeinformation
