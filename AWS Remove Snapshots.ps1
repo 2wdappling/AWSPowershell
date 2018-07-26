@@ -4,9 +4,11 @@
 
 Import-Module AWSPowerShell
 
-$aws_access_key_id = ""
-$aws_secret_access_key = ""
-$aws_session_token = ""
+$access_key = Get-Content .\encrypted.txt
+$aws_access_key_id = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($acces_key[0]))
+$aws_secret_access_key = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($acces_key[1]))
+$aws_session_token = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($acces_key[2]))
+
 $OutFolder = "C:\temp"
 
 $Snapshots = Import-Csv C:\temp\snapshot1.csv
