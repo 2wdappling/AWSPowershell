@@ -2,6 +2,7 @@
 #Required CSV fields = SnapshotID, Region
 #Fill in Access Key ID, Secret Access Key and Session Token
 ### To do: check for snapshot prior to deletion, look up better ways of checking if it's attached to an AMI
+### Better reporting
 
 Import-Module AWSPowerShell
 
