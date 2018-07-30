@@ -13,8 +13,9 @@ $aws_session_token = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([
 Set-AWSCredential -AccessKey $aws_access_key_id -SecretKey $aws_secret_access_key -SessionToken $aws_session_token
 
 #Need to find a way to pull this info from AWS as new instances will require manual addition
-$Regions = @("us-east-1", "us-east-2", "us-west-1", "us-west-2", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1", "ap-southeast-2", "ca-central-1", "cn-north-1", "cn-northwest-1", "eu-central-1", "eu-west-1", "eu-west-2", "eu-west-3","sa-east-1")
-#(Get-AWSRegion).Name
+$Regions = Get-DefaultAWSRegion
+#@("us-east-1", "us-east-2", "us-west-1", "us-west-2", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1", "ap-southeast-2", "ca-central-1", "cn-north-1", "cn-northwest-1", "eu-central-1", "eu-west-1", "eu-west-2", "eu-west-3","sa-east-1")
+
 #InstanceID to search for
 $InstanceID = "insertIDhere"
 
@@ -22,7 +23,7 @@ $InstanceID = "insertIDhere"
 $InstanceFound = $false
 do {
     ForEach($Region in $Regions){
-        $Instance = Get-EC2Instance -InstanceId $InstanceID -Region $Region
+        $Instance = Get-EC2Instance -InstanceId $InstanceID -Region $Region.Region
         if($Instance){
             $InstanceFound = $true
             $Instance
