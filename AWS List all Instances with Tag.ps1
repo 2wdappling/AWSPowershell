@@ -1,7 +1,5 @@
 Import-Module AWSPowerShell
 
-#Pull content from the encrypted text file created in AWS Import Keys.ps1 and save as objects
-
 $aws_access_key_id = ""
 $aws_secret_access_key = ""
 $aws_session_token = ""
